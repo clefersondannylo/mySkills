@@ -23,9 +23,7 @@ export function Home() {
   }
 
   function handleRemoveSkill(id: string) {
-    setMySkills(oldState => oldState.filter(
-      skill => skill.id != id
-    ))
+    setMySkills((oldState) => oldState.filter((skill) => skill.id != id));
   }
 
   useEffect(() => {
@@ -48,6 +46,7 @@ export function Home() {
         placeholder="new skill"
         placeholderTextColor={"#696969"}
         onChangeText={setNewSkill}
+        onSubmitEditing={handleAddNewSkill}
       />
       <Button title="Add" onPress={handleAddNewSkill} />
 
@@ -59,8 +58,8 @@ export function Home() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <SkillCard
-            skill={item.name} 
-            onPress={() => handleRemoveSkill(item.id)} 
+            skill={item.name}
+            onPress={() => handleRemoveSkill(item.id)}
           />
         )}
       />
